@@ -10,7 +10,7 @@
             "32": "assets/icon.png"
         },
         "default_title": "Imposter Alert",
-        "default_popup": "popup.html"
+        "default_popup": "frontend/popup.html"
     },
     "content_scripts": [
         {
@@ -18,7 +18,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "content.js"
+                "src/content.js"
             ]
         }
     ]
