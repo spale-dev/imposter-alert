@@ -12,6 +12,16 @@
         "default_title": "Imposter Alert",
         "default_popup": "frontend/popup.html"
     },
+    "web_accessible_resources": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "resources": [
+                "assets/icon.png"
+            ]
+        }
+    ],
     "content_scripts": [
         {
             "matches": [
