@@ -1,33 +1,8 @@
 {
+    "manifest_version": 3,
     "name": "Imposter Alert",
     "version": "0.1.0",
     "description": "Browser extension that highlights references to the popular party game Among Us.",
-    "permissions": [
-        "tabs"
-    ],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "contentScript.js"
-            ]
-        }
-    ],
-    "web_accessible_resources": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "resources": [
-                "assets/icon.png"
-            ]
-        }
-    ],
     "action": {
         "default_icon": {
             "16": "assets/icon.png",
@@ -37,5 +12,14 @@
         "default_title": "Imposter Alert",
         "default_popup": "popup.html"
     },
-    "manifest_version": 3
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
 }
