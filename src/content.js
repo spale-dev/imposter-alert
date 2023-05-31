@@ -17,33 +17,25 @@ function highlightReference(element) {
         const index = words.findIndex((word) => word.toLowerCase().includes(foundWord.toLowerCase()));
 
         if (index !== -1) {
+            const icon = getIcon('../assets/icon.png');
 
-            const img = document.createElement('img');
-            img.src = chrome.runtime.getURL('../assets/icon.png');
-            img.style.display = 'inline-block';
-            img.style.verticalAlign = 'middle';
-            img.style.margin = '0 1px 0 2px';
-            img.style.width = '20px';
-
-            // Create text nodes for the text before and after the found word
+            // Get text before found word
             const beforeText = words.slice(0, index).join(' ');
             const beforeTextNode = document.createTextNode(beforeText);
 
+            // Get text after found word
             const afterText = words.slice(index + 1).join(' ');
             const afterTextNode = document.createTextNode(afterText);
 
-            // Create a new span element
+            // Create element for found word
             const spanElement = document.createElement('span');
-            spanElement.style.color = 'red'; // Apply red color
-
-            // Create a new text node with the word
+            spanElement.style.color = 'red';
             const wordTextNode = document.createTextNode(words[index] + ' ');
             spanElement.appendChild(wordTextNode);
 
-            // Replace the original text node with the new nodes
             node.textContent = '';
             node.parentNode.insertBefore(beforeTextNode, node);
-            node.parentNode.insertBefore(img, node);
+            node.parentNode.insertBefore(icon, node);
             node.parentNode.insertBefore(spanElement, node);
             node.parentNode.insertBefore(afterTextNode, node);
         }
@@ -81,4 +73,16 @@ function isValidNode(node) {
         }
     }
     return { found: false };
+}
+
+function getIcon(url) {
+    const img = document.createElement('img');
+    img.src = chrome.runtime.getURL(url);
+
+    img.style.display = 'inline-block';
+    img.style.verticalAlign = 'middle';
+    img.style.margin = '0 1px 0 2px';
+    img.style.width = '20px';
+
+    return img;
 }
